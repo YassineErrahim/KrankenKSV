@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="KrankenKSV.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KrankenKSV.Views" 
+             xmlns:viewmodels="clr-namespace:KrankenKSV.ViewModels" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Background="White">
+        <WrapPanel  Height="600">
+            <Grid Height="100" Width="800">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="600">
+
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition>
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Border 
+                    Width="450" 
+                    HorizontalAlignment="Center"
+                    Height="70"
+                    CornerRadius="30" 
+                    Background="LightGray">
+                    <TextBox 
+                        x:Name="Suche" 
+                        Background="Transparent"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Left"
+                        Padding="20"
+                        BorderThickness="0" 
+                        Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                </Border>
+                <Button
+                    x:Name="Upload"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Width="50"
+                    Height="50"
+                    BorderThickness="0"
+                    Command="{Binding}"
+                    >
+                    <Viewbox Width="15" Height="15">
+                        <Image Source="{StaticResource upload}"></Image>
+                    </Viewbox>
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="20"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+            <TextBlock FontSize="18pt" FontWeight="Bold">Deutsche gesetzliche Krankenkassen :</TextBlock>
+
+            <DataGrid
+                ItemsSource="{Binding Krankenkassen}"
+                AutoGenerateColumns="False"
+                HorizontalScrollBarVisibility="Visible"
+                VerticalScrollBarVisibility="Auto"
+                ScrollViewer.CanContentScroll="True"
+                Background="White"
+                GridLinesVisibility="None"
+                HorizontalAlignment="Stretch"
+                BorderThickness="0,0,0,0"
+                Margin="0,20,0,0"
+                Height="400"
+                Width="1000"
+                >
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+                            <Setter Property="BorderBrush" Value="Gray"/>
+                            <Setter Property="Height" Value="30"/>
+                        </Style>
+
+                        <Style TargetType="{x:Type DataGridRowHeader}">
+                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                            <Setter Property="BorderBrush" Value="LightGray"/>
+
+                            <Setter Property="Height" Value="30"/>
+                        </Style>
+
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                            <Setter Property="BorderBrush" Value="LightGray"/>
+                            <Setter Property="Height" Value="30"/>
+                        </Style>
+
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name"  Binding="{Binding Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="IK" Width="100" Binding="{Binding IK}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Hs. PostalCode" Width="110" Binding="{Binding Hausanschrift.PostCode}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Hs. City" Width="100" Binding="{Binding Hausanschrift.City}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Hs. StreetName" Width="150" Binding="{Binding Hausanschrift.StreetName}"></DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Ps. PostalCode" Width="110" Binding="{Binding Postanschrift.PostCode}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ps. City" Width="100" Binding="{Binding Postanschrift.City}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ps. StreetName" Width="150" Binding="{Binding Postanschrift.StreetName}"></DataGridTextColumn>
+
+                        <DataGridTextColumn Header="PostalCode" Width="110" Binding="{Binding Anschrift.PostCode}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="City" Width="100" Binding="{Binding Anschrift.City}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="StreetName" Width="150" Binding="{Binding Anschrift.StreetName}"></DataGridTextColumn>
+
+                        <DataGridTextColumn Header="VerweisIK" Width="100" Binding="{Binding VerweisIK}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="UnkNumber" Width="100" Binding="{Binding UnkNumber}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Email" Width="200" Binding="{Binding Email}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            
+
+        </WrapPanel>
+    </Grid>
+</UserControl>

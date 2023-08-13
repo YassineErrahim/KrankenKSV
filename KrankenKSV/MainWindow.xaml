@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KrankenKSV" 
+        xmlns:views="clr-namespace:KrankenKSV.Views" 
+        xmlns:ViewModels="clr-namespace:KrankenKSV.ViewModels" 
+        x:Class="KrankenKSV.MainWindow" 
+        mc:Ignorable="d"
+        Title="Krankenkasse" 
+        Height="600" 
+        Width="1000"
+        >
+    <Grid>
+        <views:HomeView Width="1000" Height="600"/>
+    </Grid>
+
+
+</Window>
